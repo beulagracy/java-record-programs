@@ -1,0 +1,106 @@
+package week6;
+import student.Student;
+import requestbook.RequestBook;
+import issuebook.IssueBook;
+public class demosrp 
+{
+	public static void main(String[] args)
+	{
+		Student sony=new Student();
+		sony.setname("sony mathew");
+		sony.setregisterNo("119cs22048");
+		RequestBook rb=new RequestBook();
+		rb.setbookName("java programming");
+		rb.setduration(2);
+		rb.setStudent(sony);
+		rb.searchbook();
+		IssueBook iborder=new IssueBook(rb);
+		iborder.issuebook();	
+	}
+}
+package student;
+
+public class Student
+{
+	private String name;
+	private String registerNo;
+	
+	public String getname()
+	{
+		return name;
+	}
+	public void setname()
+	{
+		this.name=name;
+	}
+	public String getregisterNo()
+	{
+		return registerNo;
+	}
+	public void setregisterNo()
+	{
+		this.registerNo=rno;
+	}
+}
+package requestbook;
+import student.Student;
+import java.util.Random;
+public class RequestBook 
+{
+	private Student student;
+	private String requestId;
+	private String bookName;
+	private int duration;
+	
+	public Student getStudent()
+	{
+		return student;
+	}
+	public void setStudent(Student student)
+	{
+		this.student=student;
+	}
+	public String getrequestId()
+	{
+		return requestId;
+	}
+	public void setrequestId(String bookName)
+	{
+		Random random=new Random();
+		this.requestId=(bookName+" "+random.nextInt(500));
+	}
+	public String getbookName()
+	{
+		return bookName;
+	}
+	public void setbookName(String bookName)
+	{
+		this.bookName=bookName;
+		setrequestId(bookName);
+	}
+	public int getduration()
+	{
+		return duration;
+	}
+	public void searchBook()
+	{
+		System.out.println("searching book for student"+this.getStudent().getname()+"who has requested"+this.getbookName());
+	}
+}
+package issuebook;
+import student.Student;
+import requestbook.RequestBook;
+public class IssueBook 
+{
+	private RequestBook rb;
+	public IssueBook(RequestBook rb)
+	{
+		this.rb=rb;
+	}
+		public void issuebook()
+		{
+			System.out.println("issuing the book");
+			System.out.println("with request id as"+this.rb.getrequestId()+"being issued to"+this.getStudent().getname());
+			System.out.println("book is to be delivered to:"+this.rb.getStudent().getregisterNo());
+	}	
+}
