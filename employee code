@@ -1,0 +1,25 @@
+package emp;
+import java.util.Scanner;
+public class Employee 
+{
+	short empid;
+	public int expyears;
+	String empname;
+	public float salary;
+	public Employee()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter employee number....");
+		empid=Short.parseShort(sc.next());
+		System.out.println("enter employee name...");
+		empname=sc.next();
+		System.out.println("enter employee gross salary....");
+		salary=Float.parseFloat(sc.next());
+		System.out.println("enter employee years of experience...");
+		expyears=Integer.parseInt(sc.next());
+	}
+	public void getEmployee()
+	{
+		System.out.println(empid+"\t"+empname+"\t"+expyears+"\t"+salary);
+	}
+}
